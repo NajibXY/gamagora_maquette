@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 # const SPEED = 300.0
 # const JUMP_VELOCITY = -400.0
-const SPEED = 30.0
+const SPEED = 70.0
 const JUMP_VELOCITY = -10.0
 
 var animated_body: AnimatedSprite2D

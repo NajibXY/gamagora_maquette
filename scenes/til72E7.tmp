@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=4 uid="uid://cvmppmb0me5n5"]
+[gd_scene load_steps=4 format=4 uid="uid://cvmppmb0me5n5"]
 
 [ext_resource type="TileSet" uid="uid://dw6l5ml6ui6uo" path="res://resources/soccer_tile_set.tres" id="1_gpeqp"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="2_1fhnf"]
+[ext_resource type="Script" path="res://addons/character_creator_tool_importer/character-importer.gd" id="2_tsk6s"]
 
 [node name="TileMap" type="Node2D"]
 y_sort_enabled = true
@@ -15,3 +17,13 @@ y_sort_enabled = true
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAIAAEAAQAAAAAAAAAIAAIAAQAAAAEAAAAIAAMAAQAAAAIAAAAJAAEAAQABAAAAAAAJAAIAAQABAAEAAAAKAAEAAQACAAAAAAAKAAIAAQACAAEAAAALAAEAAQADAAAAAAALAAIAAQADAAEAAAALAAMAAQADAAIAAAAIABIAAgAAAAAAAAAIABMAAgAAAAEAAAAIABQAAgAAAAIAAAAJABIAAgABAAAAAAAJABMAAgABAAEAAAAJABQAAgABAAIAAAAKABIAAgACAAAAAAAKABMAAgACAAEAAAAKABQAAgACAAIAAAALABIAAgADAAAAAAALABMAAgADAAEAAAALABQAAgADAAIAAAA=")
 tile_set = ExtResource("1_gpeqp")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("2_1fhnf")
+
+[node name="CharacterCreatorToolImporter" type="Node" parent="CharacterBody2D" node_paths=PackedStringArray("target_animated_sprite")]
+script = ExtResource("2_tsk6s")
+character_spritesheet = "res://resources/mon_perso.png"
+target_animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D/CharacterCreatorToolImporter"]
