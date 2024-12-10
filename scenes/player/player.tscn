@@ -3037,10 +3037,8 @@ animations = [{
 [node name="CharacterCreatorToolImporter" type="Node" parent="." node_paths=PackedStringArray("target_animated_sprite")]
 script = ExtResource("1_nc8e0")
 character_spritesheet = "res://resources/BeauGosse.png"
-target_animated_sprite = NodePath("@AnimatedSprite2D@22112")
+target_animated_sprite = NodePath("AnimatedSprite")
 
-[node name="@AnimatedSprite2D@22112" type="AnimatedSprite2D" parent="CharacterCreatorToolImporter"]
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterCreatorToolImporter"]
 sprite_frames = SubResource("SpriteFrames_f5so1")
-animation = &"idle_up"
-frame = 1
-frame_progress = 0.817089
+animation = &"walk_left"
