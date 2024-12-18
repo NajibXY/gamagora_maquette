@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bils0xqt6nrmc"]
+[gd_scene load_steps=3 format=3 uid="uid://bils0xqt6nrmc"]
 
 [ext_resource type="Script" path="res://scenes/menu.gd" id="1_tumx8"]
+[ext_resource type="Theme" uid="uid://doei1wvucjn24" path="res://resources/pixel_button.tres" id="2_dg2xw"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -35,6 +36,7 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_dg2xw")
 text = "RETURN TO GAME"
 
 [node name="Control2" type="Control" parent="PanelContainer/VBoxContainer/HBoxContainer"]
@@ -56,6 +58,7 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_dg2xw")
 text = "QUIT
 "
 
