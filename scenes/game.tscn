@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cvmppmb0me5n5" path="res://scenes/tilemap.tscn" id="3_xilld"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qc0sn"]
-size = Vector2(18, 24)
+size = Vector2(45, 69)
 
 [node name="Node2D" type="Node2D"]
 
@@ -13,7 +13,7 @@ size = Vector2(18, 24)
 script = ExtResource("1_8f2eb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, 5)
+position = Vector2(0.5, 12.5)
 shape = SubResource("RectangleShape2D_qc0sn")
 
 [node name="PlayerNode" parent="CharacterBody2D" instance=ExtResource("2_k4dml")]
