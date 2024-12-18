@@ -8,6 +8,7 @@ const JUMP_VELOCITY = -10.0
 
 var animated_body: AnimatedSprite2D
 var collision_node: CollisionShape2D
+var map_node: Node2D
 
 var menu_node
 
@@ -27,6 +28,10 @@ func _ready() -> void:
 	menu_node.hide()
 	animated_body = get_node("AnimatedSprite")
 	collision_node = get_node("CollisionShape2D")
+	map_node = get_node("/root/Game/Map")
+
+	menu_node.process_mode = Node.PROCESS_MODE_ALWAYS
+
 	animated_body.play("idle_down")
 
 	load_game()
@@ -46,7 +51,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("escape"):
 		if menu_node.is_visible():
 			menu_node.hide()
+			get_tree().paused = false
 		else:
+			get_tree().paused = true
 			menu_node.show()
 
 	if menu_node.is_visible():
@@ -133,4 +140,4 @@ func load_game() -> void:
 			else:
 				print("Unknown key: ", i)			
 			
-	
+			

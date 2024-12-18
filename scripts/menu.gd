@@ -31,6 +31,9 @@ func _on_quit_button_pressed():
 
 func _on_return_button_pressed():
 	print("hide")
+	get_tree().paused = false
+
+
 	hide()
 
 func save_game():
