@@ -9,6 +9,7 @@ const JUMP_VELOCITY = -10.0
 var animated_body: AnimatedSprite2D
 var collision_node: CollisionShape2D
 
+var menu_node
 
 enum IdleModes {
 	RIGHT = 0,
@@ -20,6 +21,9 @@ enum IdleModes {
 var idle_mode := IdleModes.RIGHT
 
 func _ready() -> void:
+	menu_node = $"/root/Game/CanvasLayer/Menu"
+	# Hide menu_node 
+	menu_node.hide()
 	animated_body = get_node("AnimatedSprite")
 	collision_node = get_node("CollisionShape2D")
 	animated_body.play("idle_down")
@@ -33,23 +37,18 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-
-	# var direction := Input.get_axis("ui_left", "ui_right")
-	# if direction:
-	# 	velocity.x = direction * SPEED
-	# else:
-	# 	velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	# if direction:
-	# 	velocity.x = direction * SPEED
-	# else:
-	# 	velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-	
+	# Menu input
+	if Input.is_action_just_pressed("escape"):
+		if menu_node.is_visible():
+			menu_node.hide()
+		else:
+			menu_node.show()
+
+	if menu_node.is_visible():
+		return
+		
 	# Handle movement input
-
 	handle_movement_input()
 
 	# move_and_slide()

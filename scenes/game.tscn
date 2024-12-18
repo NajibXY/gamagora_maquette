@@ -1,8 +1,10 @@
-[gd_scene load_steps=394 format=4 uid="uid://dt4sqvnn5m301"]
+[gd_scene load_steps=396 format=4 uid="uid://dt4sqvnn5m301"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_8f2eb"]
 [ext_resource type="Texture2D" uid="uid://bpiy6240fapvr" path="res://resources/mon_perso.png" id="3_8ktb4"]
 [ext_resource type="TileSet" uid="uid://bbvscex0lwg70" path="res://resources/soccer_set.tres" id="3_khvy8"]
+[ext_resource type="PackedScene" uid="uid://bils0xqt6nrmc" path="res://scenes/menu.tscn" id="4_nupkn"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="5_il27x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qc0sn"]
 size = Vector2(13, 24)
@@ -3036,7 +3038,7 @@ animations = [{
 "speed": 7.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[node name="Game" type="Node2D"]
 y_sort_enabled = true
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -3069,3 +3071,8 @@ tile_set = ExtResource("3_khvy8")
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAHAAEAAQAAAAAAAAAHAAIAAQAAAAEAAAAHAAMAAQAAAAIAAAAIAAEAAQABAAAAAAAIAAIAAQABAAEAAAAJAAEAAQACAAAAAAAJAAIAAQACAAEAAAAKAAEAAQADAAAAAAAKAAIAAQADAAEAAAAKAAMAAQADAAIAAAAHABIAAgAAAAAAAAAHABMAAgAAAAEAAAAHABQAAgAAAAIAAAAIABIAAgABAAAAAAAIABMAAgABAAEAAAAIABQAAgABAAIAAAAJABIAAgACAAAAAAAJABMAAgACAAEAAAAJABQAAgACAAIAAAAKABIAAgADAAAAAAAKABMAAgADAAEAAAAKABQAAgADAAIAAAA=")
 tile_set = ExtResource("3_khvy8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Menu" parent="CanvasLayer" instance=ExtResource("4_nupkn")]
+script = ExtResource("5_il27x")
