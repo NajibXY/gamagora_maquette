@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 
 	if menu_node.is_visible():
 		return
-		
+
 	# Handle movement input
 	handle_movement_input()
 
@@ -64,8 +64,7 @@ func handle_movement_input() -> void:
 	elif velocity.x < 0:
 		animated_body.play("walk_left")
 		idle_mode = IdleModes.LEFT
-		
-	if velocity.y < 0:
+	elif velocity.y < 0:
 		animated_body.play("walk_up")
 		idle_mode = IdleModes.UP
 	elif velocity.y > 0:
