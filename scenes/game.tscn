@@ -19,3 +19,4 @@ shape = SubResource("RectangleShape2D_qc0sn")
 [node name="PlayerNode" parent="CharacterBody2D" instance=ExtResource("2_k4dml")]
 
 [node name="TileMap" parent="." instance=ExtResource("3_xilld")]
+scale = Vector2(3, 3)

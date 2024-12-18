@@ -3033,6 +3033,7 @@ animations = [{
 }]
 
 [node name="Node2D" type="Node2D"]
+scale = Vector2(3, 3)
 
 [node name="CharacterCreatorToolImporter" type="Node" parent="." node_paths=PackedStringArray("target_animated_sprite")]
 script = ExtResource("1_nc8e0")
@@ -3040,5 +3041,6 @@ character_spritesheet = "res://resources/mon_perso.png"
 target_animated_sprite = NodePath("AnimatedSprite")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterCreatorToolImporter"]
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_hlfts")
 animation = &"walk_left"
