@@ -59,6 +59,7 @@ func handle_movement_input() -> void:
 	velocity = dir * SPEED
 
 	if velocity.x > 0:
+		print("right")
 		animated_body.play("walk_right")
 		idle_mode = IdleModes.RIGHT
 	elif velocity.x < 0:
@@ -71,7 +72,8 @@ func handle_movement_input() -> void:
 	elif velocity.y > 0:
 		animated_body.play("walk_down")
 		idle_mode = IdleModes.DOWN
-	else:
+	
+	if velocity.x == 0 and velocity.y == 0:
 		change_idle_animation()
 	
 	move_and_slide()

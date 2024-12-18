@@ -3052,7 +3052,10 @@ shape = SubResource("RectangleShape2D_qc0sn")
 y_sort_enabled = true
 position = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_p7cj6")
-animation = &"walk_left"
+animation = &"walk_right"
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(5, 5)
 
 [node name="Map" type="Node2D" parent="."]
 y_sort_enabled = true
