@@ -46,16 +46,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	
-	# Menu input
-	if Input.is_action_just_pressed("escape"):
-		if menu_node.is_visible():
-			menu_node.hide()
-			get_tree().paused = false
-		else:
-			get_tree().paused = true
-			menu_node.show()
-
 	if menu_node.is_visible():
 		return
 

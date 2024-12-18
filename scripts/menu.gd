@@ -20,6 +20,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("escape"):
+		if is_visible():
+			hide()
+			get_tree().paused = false
+		else:
+			get_tree().paused = true
+			show()
 	pass
 
 func _on_quit_button_pressed():
@@ -32,8 +39,6 @@ func _on_quit_button_pressed():
 func _on_return_button_pressed():
 	print("hide")
 	get_tree().paused = false
-
-
 	hide()
 
 func save_game():
