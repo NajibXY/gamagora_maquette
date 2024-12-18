@@ -1,6 +1,7 @@
-[gd_scene load_steps=397 format=4 uid="uid://dt4sqvnn5m301"]
+[gd_scene load_steps=398 format=4 uid="uid://dt4sqvnn5m301"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_8f2eb"]
+[ext_resource type="Script" path="res://scripts/player_node.gd" id="1_vx1ef"]
 [ext_resource type="Texture2D" uid="uid://bpiy6240fapvr" path="res://resources/mon_perso.png" id="3_8ktb4"]
 [ext_resource type="TileSet" uid="uid://bbvscex0lwg70" path="res://resources/soccer_set.tres" id="3_khvy8"]
 [ext_resource type="TileSet" uid="uid://b488r7fo4ss5b" path="res://eolienne.tres" id="4_2trnw"]
@@ -3042,22 +3043,26 @@ animations = [{
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="PlayerNode" type="Node2D" parent="." groups=["Persist"]]
+y_sort_enabled = true
+script = ExtResource("1_vx1ef")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="PlayerNode"]
 y_sort_enabled = true
 disable_mode = 2
 script = ExtResource("1_8f2eb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNode/CharacterBody2D"]
 position = Vector2(-0.5, 4)
 shape = SubResource("RectangleShape2D_qc0sn")
 
-[node name="AnimatedSprite" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="PlayerNode/CharacterBody2D"]
 y_sort_enabled = true
 position = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_p7cj6")
 animation = &"walk_right"
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="PlayerNode/CharacterBody2D"]
 zoom = Vector2(5, 5)
 
 [node name="Map" type="Node2D" parent="."]

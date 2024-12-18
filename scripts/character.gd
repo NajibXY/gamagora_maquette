@@ -21,12 +21,16 @@ enum IdleModes {
 var idle_mode := IdleModes.RIGHT
 
 func _ready() -> void:
+	get_tree().set_auto_accept_quit(false)
 	menu_node = $"/root/Game/CanvasLayer/Menu"
 	# Hide menu_node 
 	menu_node.hide()
 	animated_body = get_node("AnimatedSprite")
 	collision_node = get_node("CollisionShape2D")
 	animated_body.play("idle_down")
+
+	load_game()
+	
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -58,7 +62,6 @@ func handle_movement_input() -> void:
 	velocity = dir * SPEED
 
 	if velocity.x > 0:
-		print("right")
 		animated_body.play("walk_right")
 		idle_mode = IdleModes.RIGHT
 	elif velocity.x < 0:
@@ -87,11 +90,47 @@ func change_idle_animation() -> void:
 			animated_body.play("idle_up")
 		IdleModes.DOWN:
 			animated_body.play("idle_down")
-	
-	
 
+func load_game() -> void:
+	print("load")
+	if not FileAccess.file_exists("user://savegame.save"):
+		return # Error! We don't have a save to load.
 
+	# We need to revert the game state so we're not cloning objects
+	# during loading. This will vary wildly depending on the needs of a
+	# project, so take care with this step.
 
+	# Load the file line by line and process that dictionary to restore
+	# the object it represents.
+	var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
+	while save_file.get_position() < save_file.get_length():
+		print("line")
+		var json_string = save_file.get_line()
 
-	
+		# Creates the helper class to interact with JSON.
+		var json = JSON.new()
+
+		# Check if there is any error while parsing the JSON string, skip in case of failure.
+		var parse_result = json.parse(json_string)
+		if not parse_result == OK:
+			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+			continue
+
+		# Get the data from the JSON object.
+		var node_data = json.data
+
+		# Now we set the remaining variables.
+		for i in node_data.keys():
+			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
+				continue
+			elif i == "idle_mode":
+				idle_mode = node_data[i]
+				change_idle_animation()
+			elif i == "transform.origin.x":
+				transform.origin.x = node_data[i]
+			elif i == "transform.origin.y":
+				transform.origin.y = node_data[i]
+			else:
+				print("Unknown key: ", i)			
+			
 	
